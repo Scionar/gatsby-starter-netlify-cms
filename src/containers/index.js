@@ -1,1 +1,2 @@
-export { default as LayoutContainer} from './LayoutContainer';
+export { default as HeaderContainer } from "./HeaderContainer";
+export { default as FooterContainer } from "./FooterContainer";
