@@ -1,36 +1,21 @@
 import React from "react";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
+import "./../../styles/base.scss";
 import "./Layout.scss";
 
-const Layout = ({
-  headerContentFirst,
-  headerContentSecond,
-  mainContentFirst,
-  mainContentSecond,
-  footer
-}) => {
+const Layout = ({ children, modifier, ...props }) => {
   return (
-    <div class="layout">
-      <div class="layout__header">
-        <div class="layout__header-content-first">{headerContentFirst}</div>
-        <div class="layout__header-content-second">{headerContentSecond}</div>
-      </div>
-      <div class="layout__main">
-        <div class="layout__main-content-first">{mainContentFirst}</div>
-        <div class="layout__main-content-second">{mainContentSecond}</div>
-      </div>
-      <div class="layout__footer">{footer}</div>
+    <div className={classNames("layout", modifier)}>
+      <div className="layout__content">{children}</div>
     </div>
   );
 };
 
 Layout.propTypes = {
-    headerContentFirst: PropTypes.any,
-    headerContentSecond: PropTypes.any,
-    mainContentFirst: PropTypes.any,
-    mainContentSecond: PropTypes.any,
-    footer: PropTypes.any
+  children: PropTypes.element.isRequired,
+  modifier: PropTypes.string
 };
 
 export default Layout;

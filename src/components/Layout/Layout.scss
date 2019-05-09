@@ -1,66 +1,17 @@
 @import "../../styles/variables.scss";
 
 .layout {
-  background-color: $color__white;
   box-sizing: border-box;
+  margin: 0;
+}
+
+.layout__content {
+  background-color: $color__white;
   margin: 0 auto;
-  padding: 55px;
+  padding: 2rem 3rem;
 
   @include breakpoint(m) {
     max-width: 1100px;
     width: 90%;
   }
-}
-
-.layout__header {
-  display: flex;
-  flex-direction: column;
-
-  @include breakpoint(m) {
-    flex-direction: row;
-  }
-}
-
-.layout__header-content-first {
-  @include breakpoint(m) {
-    flex: 0 0 50%;
-  }
-}
-
-.layout__header-content-second {
-  @include breakpoint(m) {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-end;
-    flex: 0 0 50%;
-  }
-}
-
-.layout__main {
-  display: flex;
-  flex-direction: column;
-
-  @include breakpoint(m) {
-    flex-direction: row;
-    margin: 100px 0 0;
-  }
-}
-
-.layout__main-content-first {
-  @include breakpoint(m) {
-    flex: 0 0 50%;
-  }
-}
-
-.layout__main-content-second {
-  @include breakpoint(m) {
-    flex: 0 0 50%;
-  }
-}
-
-.layout__footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
 }
