@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-import "./../../styles/base.scss";
 import "./Footer.scss";
 
 const Footer = ({ children, modifier, ...props }) => {
