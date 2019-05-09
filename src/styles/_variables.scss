@@ -1,0 +1,33 @@
+// Colors
+// Please use http://chir.ag/projects/name-that-color
+
+$color__prelude: #C6B8DD;
+$color__tranquil: #E4FFFF;
+$color__white: #FFF;
+
+// Breakpoints
+$breakpoint__l: 1200px;
+$breakpoint__m: 685px;
+$breakpoint__s: 500px;
+
+@mixin breakpoint($point) {
+  @if $point == l {
+    @media (min-width: $breakpoint__l) {
+      @content;
+    }
+  } @else if $point == m {
+    @media (min-width: $breakpoint__m) {
+      @content;
+    }
+  } @else if $point == s {
+    @media (min-width: $breakpoint__s) {
+      @content;
+    }
+  }
+}
+
+// Typography
+@mixin h1() {
+  font-size: 70px;
+  text-transform: uppercase;
+}
