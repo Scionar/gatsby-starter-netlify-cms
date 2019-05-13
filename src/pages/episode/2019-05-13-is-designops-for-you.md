@@ -1,4 +1,5 @@
 ---
+templateKey: episode
 title: Is DesignOps for you?
 interviewee: Angelos Arnis & Sonja Krogius
 date: 2019-05-13T11:24:34.352Z
@@ -12,7 +13,7 @@ description: >-
   needs DesignOps? When’s the right time to start thinking about it, and how
   does one even get started? We chat with Angelos Arnis, Design Operations at
   Elisa and Sonja Krogius, Lead Designer at Nordkapp, the people behind the
-  DesignOps meetups in Helsinki. 
+  DesignOps meetups in Helsinki.
 
 
 
@@ -51,4 +52,3 @@ description: >-
   Joint Futures conference
 photo: /img/example-podcast-cover.jpg
 ---
-
