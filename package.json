@@ -49,7 +49,7 @@
     "serve": "gatsby serve",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prettier": "prettier --write src/**/*"
+    "prettier": "prettier --write src/**/*.{jsx,js,json} gatsby-config.js gatsby-node.js"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
