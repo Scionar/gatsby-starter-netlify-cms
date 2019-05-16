@@ -48,12 +48,15 @@
     "develop": "npm run clean && gatsby develop",
     "serve": "gatsby serve",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "prettier --write src/**/*"
   },
   "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-plugin-prettier": "^3.1.0",
     "http-proxy-middleware": "^0.19.1",
     "npm-run-all": "^4.1.5",
-    "prettier": "^1.15.3",
+    "prettier": "^1.17.1",
     "rimraf": "^2.6.2"
   }
 }
