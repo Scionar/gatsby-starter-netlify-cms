@@ -5,7 +5,7 @@ import { graphql } from "gatsby";
 import { Layout } from "../components";
 import { HeaderContainer, FooterContainer } from "../containers";
 
-const IndexPage = ({ data }) => {
+const EpisodePage = ({ data }) => {
   const node = data.feedAnchorFm;
 
   return (
@@ -17,7 +17,7 @@ const IndexPage = ({ data }) => {
   );
 };
 
-IndexPage.propTypes = {
+EpisodePage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.object
@@ -25,7 +25,7 @@ IndexPage.propTypes = {
   })
 };
 
-export default IndexPage;
+export default EpisodePage;
 
 export const pageQuery = graphql`
   query EpisodeTemplate($id: String!) {
