@@ -5,28 +5,6 @@ backend:
 media_folder: static/img
 public_folder: /img
 
-collections:
-  - name: "episode"
-    label: "Episode"
-    folder: "src/pages/episode"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - {
-          label: "Template Key",
-          name: "templateKey",
-          widget: "hidden",
-          default: "episode",
-        }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Interviewees", name: "interviewee", widget: "string" }
-      - { label: "Date", name: "date", widget: "date" }
-      - { label: "Season", name: "season", widget: "number" }
-      - { label: "Episode", name: "episode", widget: "number" }
-      - { label: "Link", name: "link", widget: "string" }
-      - { label: "Description", name: "description", widget: "markdown" }
-      - { label: "Photo", name: "photo", widget: "image" }
-
   - name: "pages"
     label: "Pages"
     files:

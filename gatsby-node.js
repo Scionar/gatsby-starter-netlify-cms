@@ -57,14 +57,14 @@ exports.createPages = ({ actions, graphql }) => {
     const episodes = result.data.allFeedAnchorFm.edges;
 
     episodes.forEach(edge => {
-      const id = edge.node.guid;
+      const guid = edge.node.guid;
       const title = edge.node.title;
       createPage({
         path: `/episode/${slugify(title)}`,
         component: path.resolve(`src/templates/episode.js`),
         // additional data can be passed via context
         context: {
-          id
+          guid
         }
       });
     });

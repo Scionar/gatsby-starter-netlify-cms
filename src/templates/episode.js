@@ -28,8 +28,8 @@ EpisodePage.propTypes = {
 export default EpisodePage;
 
 export const pageQuery = graphql`
-  query EpisodeTemplate($id: String!) {
-    feedAnchorFm(guid: { eq: $id }) {
+  query EpisodeTemplate($guid: String!) {
+    feedAnchorFm(guid: { eq: $guid }) {
       guid
       title
       pubDate
