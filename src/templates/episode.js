@@ -6,12 +6,12 @@ import { Layout } from "../components";
 import { HeaderContainer, FooterContainer } from "../containers";
 
 const IndexPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark;
+  const node = data.feedAnchorFm;
 
   return (
     <Layout>
       <HeaderContainer />
-      <h1>{frontmatter.title}</h1>
+      <h1>{node.title}</h1>
       <FooterContainer />
     </Layout>
   );
@@ -29,11 +29,20 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query EpisodeTemplate($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      id
-      html
-      frontmatter {
-        title
+    feedAnchorFm(guid: { eq: $id }) {
+      guid
+      title
+      pubDate
+      enclosure {
+        url
+        length
+        type
+      }
+      link
+      itunes {
+        duration
+        season
+        episode
       }
     }
   }
