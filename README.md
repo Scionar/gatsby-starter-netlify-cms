@@ -15,6 +15,14 @@ Own Netlify deploy is not needed for development. On cases where changes are not
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Scionar/nudging-pixels)
 
+## Configure
+
+Secrets are managed with environment variables. If env files are used, create env file depending on used environment. `/.env.development` for development environment and `/.env.production` for production. These variables need to be set also on Netlify environment.
+
+```
+# Anchor FM RSS feed URL
+RSS_FEED_URL=
+```
 
 ## Development
 
