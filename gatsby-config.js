@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 var proxy = require('http-proxy-middleware');
 
 module.exports = {
@@ -12,7 +16,7 @@ module.exports = {
     {
       resolve: `gatsby-source-rss-feed`,
       options: {
-        url: ``,
+        url: process.env.RSS_FEED_URL,
         name: `AnchorFM`,
         // Optional
         // Read parser document: https://github.com/bobby-brennan/rss-parser#readme
