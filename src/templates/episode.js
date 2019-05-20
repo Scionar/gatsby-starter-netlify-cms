@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
-import { Layout, TwoCellGrid, EpisodeDescription } from '../components';
+import {
+  Layout,
+  TwoCellGrid,
+  EpisodeDescription,
+  EpisodeImage
+} from '../components';
 import { HeaderContainer, FooterContainer } from '../containers';
 
 class EpisodePage extends Component {
@@ -14,7 +19,12 @@ class EpisodePage extends Component {
 
   firstCell() {
     const node = this.props.data.feedAnchorFm;
-    return <div>{node.title}</div>;
+    return (
+      <>
+        <EpisodeImage src={node.itunes.image.attrs.href} alt={node.title} />
+        <div>{node.title}</div>
+      </>
+    );
   }
 
   secondCell() {
@@ -68,6 +78,11 @@ export const pageQuery = graphql`
         duration
         season
         episode
+        image {
+          attrs {
+            href
+          }
+        }
       }
     }
   }
