@@ -3,15 +3,17 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
 import { Layout } from "../components";
-import { HeaderContainer, FooterContainer } from "../containers";
+import {
+  HeaderContainer,
+  FooterContainer,
+  EpisodeFeedContainer
+} from "../containers";
 
 const IndexPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark;
-
   return (
     <Layout>
       <HeaderContainer />
-      <h1>{frontmatter.title}</h1>
+      <EpisodeFeedContainer />
       <FooterContainer />
     </Layout>
   );

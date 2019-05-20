@@ -2,9 +2,12 @@
 // Please use http://chir.ag/projects/name-that-color
 
 $color__edward: #9daaaa;
+$color__portage: #8e80ec;
 $color__prelude: #c6b8dd;
 $color__tranquil: #e4ffff;
 $color__white: #fff;
+$color__silver: #bababa;
+$color__silver-chalice: #a3a3a3;
 
 // Breakpoints
 $breakpoint__l: 1200px;
@@ -31,4 +34,18 @@ $breakpoint__s: 500px;
 @mixin h1() {
   font-size: 70px;
   text-transform: uppercase;
+}
+
+@mixin link() {
+  &,
+  &:visited,
+  &:active {
+    color: $color__portage;
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: $color__portage;
+    text-decoration: underline;
+  }
 }
