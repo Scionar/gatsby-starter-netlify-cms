@@ -35,10 +35,12 @@
 
 .episode-card__cover-image {
   flex: 0 0 50%;
+  width: 50%;
 
   @include breakpoint(m) {
     flex: 0 0 11rem;
     margin: 0 2rem 0 0;
+    width: 11rem;
   }
 }
 
