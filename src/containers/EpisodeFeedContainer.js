@@ -30,7 +30,7 @@ const EpisodeFeedContainerQuery = props => (
   <StaticQuery
     query={graphql`
       query EpisodeFeedContainerQuery {
-        allFeedAnchorFm {
+        allFeedAnchorFm(sort: { order: ASC, fields: [isoDate] }) {
           nodes {
             guid
             title
