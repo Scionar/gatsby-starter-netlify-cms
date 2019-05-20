@@ -1,0 +1,29 @@
+@import '../../styles/variables.scss';
+
+.two-cell-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.two-cell-grid--reverse {
+  @include breakpoint(m) {
+    flex-direction: row-reverse;
+  }
+}
+
+.two-cell-grid__first-cell {
+  flex: 0 0 100%;
+
+  @include breakpoint(m) {
+    flex: 0 0 50%;
+  }
+}
+
+.two-cell-grid__second-cell {
+  flex: 0 0 100%;
+
+  @include breakpoint(m) {
+    flex: 0 0 50%;
+  }
+}
