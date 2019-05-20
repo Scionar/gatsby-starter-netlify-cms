@@ -1,41 +1,57 @@
-import React from "react";
+import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
 
-import { EpisodeCard } from "../components";
-import examplePodcastCover from "../img/example-podcast-cover.jpg";
+import { episodePath, stripHtml, truncate } from '../utils';
+import { EpisodeCard } from '../components';
+import examplePodcastCover from '../img/example-podcast-cover.jpg';
 
-const EpisodeFeedContainer = () => {
-  const mockData = [
-    {
-      runningNumber: 1,
-      coverImage: examplePodcastCover,
-      title: "Angelos Arnis & Sonja Krogius: Is DesignOps for you?",
-      description:
-        "DesignOps helps companies invest in design by operationalizing their workflow, hiring, alignment between teams, and more so that designers are able to focus on design work and let someone else take control of the rest."
-    },
-    {
-      runningNumber: 2,
-      coverImage: examplePodcastCover,
-      title: "Angelos Arnis & Sonja Krogius: Is DesignOps for you?",
-      description:
-        "DesignOps helps companies invest in design by operationalizing their workflow, hiring, alignment between teams, and more so that designers are able to focus on design work and let someone else take control of the rest."
-    },
-    {
-      runningNumber: 3,
-      coverImage: examplePodcastCover,
-      title: "Angelos Arnis & Sonja Krogius: Is DesignOps for you?",
-      description:
-        "DesignOps helps companies invest in design by operationalizing their workflow, hiring, alignment between teams, and more so that designers are able to focus on design work and let someone else take control of the rest."
-    }
-  ];
-
-  return mockData.map((item, index) => {
+const EpisodeFeedContainer = ({ data }) => {
+  const episodes = data.allFeedAnchorFm.nodes;
+  return episodes.map((node, index) => {
     // Set modifier class if index is uneven.
-    const modifier = index % 2 === 0 ? undefined : 'episode-card__poked-right';
+    const modifier = index % 2 === 0 ? undefined : 'episode-card--poked-right';
 
     return (
-      <EpisodeCard {...item} modifier={modifier} style={{marginTop: '2rem'}} />
+      <EpisodeCard
+        key={node.guid}
+        modifier={modifier}
+        style={{ marginTop: '4rem' }}
+        runningNumber={node.itunes.episode}
+        coverImage={node.itunes.image.attrs.href}
+        title={node.title}
+        description={truncate(stripHtml(node.content), 150)}
+        link={episodePath(node.title)}
+      />
     );
   });
 };
 
-export default EpisodeFeedContainer;
+const EpisodeFeedContainerQuery = props => (
+  <StaticQuery
+    query={graphql`
+      query EpisodeFeedContainerQuery {
+        allFeedAnchorFm {
+          nodes {
+            guid
+            title
+            content
+            link
+            itunes {
+              summary
+              image {
+                attrs {
+                  href
+                }
+              }
+              season
+              episode
+            }
+          }
+        }
+      }
+    `}
+    render={data => <EpisodeFeedContainer data={data} {...props} />}
+  />
+);
+
+export default EpisodeFeedContainerQuery;
