@@ -1,14 +1,13 @@
 require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
+  path: `.env.${process.env.NODE_ENV}`
+});
 
 var proxy = require('http-proxy-middleware');
 
 module.exports = {
   siteMetadata: {
     title: 'Nudging Pixels',
-    description:
-      'Design podcast'
+    description: 'Design podcast'
   },
   plugins: [
     'gatsby-plugin-react-helmet',

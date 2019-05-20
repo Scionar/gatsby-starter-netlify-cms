@@ -1,11 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-import "./Header.scss";
+import './Header.scss';
 
 const Header = ({ children, modifier, ...props }) => {
-  return <div className={classNames("header", modifier)}>{children}</div>;
+  return <div className={classNames('header', modifier)}>{children}</div>;
 };
 
 Header.propTypes = {

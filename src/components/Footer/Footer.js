@@ -1,11 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-import "./Footer.scss";
+import './Footer.scss';
 
 const Footer = ({ children, modifier, ...props }) => {
-  return <div className={classNames("footer", modifier)}>{children}</div>;
+  return <div className={classNames('footer', modifier)}>{children}</div>;
 };
 
 Footer.propTypes = {

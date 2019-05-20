@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import "./Navigation.scss";
+import './Navigation.scss';
 
 const Navigation = () => (
   <ul className="navigation">

@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-import HoustonLogo from "../../img/houston-logo.svg";
-import "./HoustonAd.scss";
+import HoustonLogo from '../../img/houston-logo.svg';
+import './HoustonAd.scss';
 
 const HoustonAd = ({ modifier }) => (
-  <div className={classNames("houston-ad", modifier)}>
+  <div className={classNames('houston-ad', modifier)}>
     <img className="houston-ad__logo" src={HoustonLogo} alt="Houston Inc." />
     <a
       className="houston-ad__link"

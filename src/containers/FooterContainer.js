@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { Footer, HoustonAd } from "../components";
+import { Footer, HoustonAd } from '../components';
 
 const FooterContainer = () => (
   <Footer>

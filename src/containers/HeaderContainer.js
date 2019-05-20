@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { Header, Logo } from "../components";
+import { Header, Logo } from '../components';
 
 const HeaderContainer = () => (
   <Header>

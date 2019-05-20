@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { graphql } from "gatsby";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
 
-import { Layout } from "../components";
+import { Layout } from '../components';
 import {
   HeaderContainer,
   FooterContainer,
   EpisodeFeedContainer
-} from "../containers";
+} from '../containers';
 
 const IndexPage = ({ data }) => {
   return (

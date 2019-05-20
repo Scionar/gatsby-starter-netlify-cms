@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { graphql } from "gatsby";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
 
-import { Layout } from "../components";
-import { HeaderContainer, FooterContainer } from "../containers";
+import { Layout } from '../components';
+import { HeaderContainer, FooterContainer } from '../containers';
 
 const EpisodePage = ({ data }) => {
   const node = data.feedAnchorFm;
