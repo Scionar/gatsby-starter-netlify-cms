@@ -1,32 +1,54 @@
 @import "../../styles/variables.scss";
 
 .episode-card {
+  align-items: center;
   display: flex;
   flex-direction: row;
-  height: 10rem;
+  flex-wrap: wrap;
+
+  @include breakpoint(m) {
+    flex-wrap: nowrap;
+    height: 11rem;
+  }
 }
 
-.episode-card__poked-right {
-  margin: 0 0 0 1rem;
+.episode-card--poked-right {
+  @include breakpoint(l) {
+    margin: 0 0 0 11rem;
+  }
 }
 
 .episode-card__running-number {
   align-items: center;
   color: $color__silver;
   display: flex;
+  flex: 0 0 25%;
   flex-direction: column;
   font-size: 2.5rem;
   justify-content: center;
-  margin: 0 2rem 0 0;
+
+  @include breakpoint(m) {
+    flex: 0 0 4rem;
+    margin: 0 2rem 0 0;
+  }
 }
 
 .episode-card__cover-image {
-  flex: 0 0 10rem;
-  margin: 0 2rem 0 0;
+  flex: 0 0 50%;
+
+  @include breakpoint(m) {
+    flex: 0 0 11rem;
+    margin: 0 2rem 0 0;
+  }
 }
 
 .episode-card__info {
+  margin: 3rem 0 0;
   max-width: 40rem;
+
+  @include breakpoint(m) {
+    margin: 0;
+  }
 }
 
 .episode-card__title {
@@ -38,11 +60,13 @@
   color: $color__silver-chalice;
   line-height: 1.8rem;
   margin: 1rem 0 0;
+
+  @include breakpoint(m) {
+    overflow: hidden;
+  }
 }
 
 .episode-card__link {
-  color: $color__portage;
   display: inline-block;
   margin: 0.8rem 0 0;
-  text-decoration: none;
 }
