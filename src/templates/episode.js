@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
-import { Layout, TwoCellGrid } from '../components';
+import { Layout, TwoCellGrid, EpisodeDescription } from '../components';
 import { HeaderContainer, FooterContainer } from '../containers';
 
 class EpisodePage extends Component {
@@ -18,7 +18,10 @@ class EpisodePage extends Component {
   }
 
   secondCell() {
-    return <div>Content...</div>;
+    const node = this.props.data.feedAnchorFm;
+    return (
+      <EpisodeDescription dangerouslySetInnerHTML={{ __html: node.content }} />
+    );
   }
 
   render() {
@@ -53,6 +56,7 @@ export const pageQuery = graphql`
     feedAnchorFm(guid: { eq: $guid }) {
       guid
       title
+      content
       pubDate
       enclosure {
         url
