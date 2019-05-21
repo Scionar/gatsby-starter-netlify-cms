@@ -1,0 +1,16 @@
+@import '../../styles/variables.scss';
+
+.episode-description {
+  color: $color__gray;
+  line-height: 2rem;
+
+  a {
+    color: $color__gray;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  p {
+    margin: 0.5rem 0;
+  }
+}
