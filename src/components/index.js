@@ -10,3 +10,4 @@ export {
   default as EpisodeDescription
 } from './EpisodeDescription/EpisodeDescription';
 export { default as EpisodeImage } from './EpisodeImage/EpisodeImage';
+export { default as EpisodeTitle } from './EpisodeTitle/EpisodeTitle';
