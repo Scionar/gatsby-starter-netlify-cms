@@ -26,6 +26,10 @@ RSS_FEED_URL=
 
 ## Development
 
+Git pre-commit hook runs Prettier formatter and tests. If tests fail, commit is prevented.
+
+### Scripts
+
 Install packages
 
 ```sh
@@ -37,3 +41,7 @@ Run development mode. Environment is by default opened into [localhost:8000](htt
 ```sh
 npm run develop
 ```
+
+## Tests
+
+[Jest framework](https://jestjs.io/) is configured to work with project. Read more how Jest is configured from [Unit testing | Gatsby](https://www.gatsbyjs.org/docs/unit-testing/).
