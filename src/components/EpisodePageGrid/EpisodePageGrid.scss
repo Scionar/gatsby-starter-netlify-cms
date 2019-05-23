@@ -3,7 +3,7 @@
 $gap-between: 5rem;
 $gap-half: $gap-between / 2;
 
-.two-cell-grid {
+.episode-page-grid {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -13,13 +13,13 @@ $gap-half: $gap-between / 2;
   }
 }
 
-.two-cell-grid--reverse {
+.episode-page-grid--reverse {
   @include breakpoint(m) {
     flex-direction: row-reverse;
   }
 }
 
-.two-cell-grid__first-cell {
+.episode-page-grid__first-cell {
   box-sizing: border-box;
   flex: 0 0 100%;
 
@@ -28,14 +28,14 @@ $gap-half: $gap-between / 2;
     margin: 0 $gap-between 0 0;
   }
 
-  .two-cell-grid--reverse & {
+  .episode-page-grid--reverse & {
     @include breakpoint(m) {
       margin: 0;
     }
   }
 }
 
-.two-cell-grid__second-cell {
+.episode-page-grid__second-cell {
   box-sizing: border-box;
   flex: 0 0 100%;
   margin: $gap-between 0 0 0;
@@ -45,7 +45,7 @@ $gap-half: $gap-between / 2;
     margin: 0;
   }
 
-  .two-cell-grid--reverse & {
+  .episode-page-grid--reverse & {
     @include breakpoint(m) {
       margin: 0 $gap-between 0 0;
     }

@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import './TwoCellGrid.scss';
+import './EpisodePageGrid.scss';
 
-const TwoCellGrid = ({ modifier, firstCell, secondCell }) => (
-  <div className={classNames('two-cell-grid', modifier)}>
-    <div className="two-cell-grid__first-cell">{firstCell}</div>
-    <div className="two-cell-grid__second-cell">{secondCell}</div>
+const EpisodePageGrid = ({ modifier, firstCell, secondCell }) => (
+  <div className={classNames('episode-page-grid', modifier)}>
+    <div className="episode-page-grid__first-cell">{firstCell}</div>
+    <div className="episode-page-grid__second-cell">{secondCell}</div>
   </div>
 );
 
-TwoCellGrid.propTypes = {
+EpisodePageGrid.propTypes = {
   firstCell: PropTypes.oneOfType([
     PropTypes.element.isRequired,
     PropTypes.arrayOf(PropTypes.element).isRequired
@@ -23,4 +23,4 @@ TwoCellGrid.propTypes = {
   modifier: PropTypes.string
 };
 
-export default TwoCellGrid;
+export default EpisodePageGrid;

@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 
 import {
   Layout,
-  TwoCellGrid,
+  EpisodePageGrid,
   EpisodeDescription,
   EpisodeImage,
   EpisodeTitle,
@@ -43,8 +43,8 @@ class EpisodePage extends Component {
     return (
       <Layout>
         <HeaderContainer />
-        <TwoCellGrid
-          modifier="two-cell-grid--reverse"
+        <EpisodePageGrid
+          modifier="episode-page-grid--reverse"
           firstCell={this.firstCell()}
           secondCell={this.secondCell()}
         />
