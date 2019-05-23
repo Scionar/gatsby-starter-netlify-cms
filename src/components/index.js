@@ -9,3 +9,4 @@ export { default as TwoCellGrid } from './TwoCellGrid/TwoCellGrid';
 export {
   default as EpisodeDescription
 } from './EpisodeDescription/EpisodeDescription';
+export { default as EpisodeImage } from './EpisodeImage/EpisodeImage';
