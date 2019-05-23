@@ -10,7 +10,11 @@ import {
   EpisodeTitle,
   EpisodePlayer
 } from '../components';
-import { HeaderContainer, FooterContainer } from '../containers';
+import {
+  HeaderContainer,
+  FooterContainer,
+  EpisodeAvailableOnContainer
+} from '../containers';
 
 class EpisodePage extends Component {
   constructor(props) {
@@ -26,6 +30,7 @@ class EpisodePage extends Component {
         <EpisodeImage src={node.itunes.image.attrs.href} alt={node.title} />
         <EpisodeTitle style={{ marginTop: '2rem' }}>{node.title}</EpisodeTitle>
         <EpisodePlayer url={node.link} style={{ marginTop: '2rem' }} />
+        <EpisodeAvailableOnContainer />
       </>
     );
   }

@@ -12,3 +12,9 @@ export {
 export { default as EpisodeImage } from './EpisodeImage/EpisodeImage';
 export { default as EpisodeTitle } from './EpisodeTitle/EpisodeTitle';
 export { default as EpisodePlayer } from './EpisodePlayer/EpisodePlayer';
+export {
+  default as EpisodeAvailableOn
+} from './EpisodeAvailableOn/EpisodeAvailableOn';
+export {
+  default as EpisodeAvailableOnItem
+} from './EpisodeAvailableOnItem/EpisodeAvailableOnItem';

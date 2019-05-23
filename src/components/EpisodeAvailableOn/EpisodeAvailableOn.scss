@@ -1,0 +1,26 @@
+@import '../../styles/variables.scss';
+
+.episode-available-on {
+  margin: 0 auto;
+  width: 100%;
+
+  @include breakpoint(s) {
+    width: calc(100% - 4rem);
+  }
+}
+
+.episode-available-on__header-container {
+  text-align: center;
+}
+
+.episode-available-on__header {
+  color: $color__gray;
+  font-weight: bold;
+}
+
+.episode-available-on__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2rem 0 0;
+  padding: 0;
+}
