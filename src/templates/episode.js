@@ -4,13 +4,17 @@ import { graphql } from 'gatsby';
 
 import {
   Layout,
-  TwoCellGrid,
+  EpisodePageGrid,
   EpisodeDescription,
   EpisodeImage,
   EpisodeTitle,
   EpisodePlayer
 } from '../components';
-import { HeaderContainer, FooterContainer } from '../containers';
+import {
+  HeaderContainer,
+  FooterContainer,
+  EpisodeAvailableOnContainer
+} from '../containers';
 
 class EpisodePage extends Component {
   constructor(props) {
@@ -26,6 +30,7 @@ class EpisodePage extends Component {
         <EpisodeImage src={node.itunes.image.attrs.href} alt={node.title} />
         <EpisodeTitle style={{ marginTop: '2rem' }}>{node.title}</EpisodeTitle>
         <EpisodePlayer url={node.link} style={{ marginTop: '2rem' }} />
+        <EpisodeAvailableOnContainer />
       </>
     );
   }
@@ -43,8 +48,9 @@ class EpisodePage extends Component {
     return (
       <Layout>
         <HeaderContainer />
-        <TwoCellGrid
-          modifier="two-cell-grid--reverse"
+        <EpisodePageGrid
+          modifier="episode-page-grid--reverse"
+          style={{ marginTop: '2rem' }}
           firstCell={this.firstCell()}
           secondCell={this.secondCell()}
         />

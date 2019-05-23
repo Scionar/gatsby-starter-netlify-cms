@@ -1,5 +1,8 @@
 import slugify from 'slugify';
 
-export default title => {
-  return `/episode/${slugify(title)}`;
+const episodePath = title => {
+  if (!title) throw new Error();
+  return `/episode/${slugify(title, { remove: /[?*+~.()'"!:@]/g })}`;
 };
+
+export default episodePath;
