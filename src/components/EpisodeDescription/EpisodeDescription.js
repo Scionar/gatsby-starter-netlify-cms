@@ -13,7 +13,8 @@ const EpisodeDescription = ({ children, modifier, ...props }) => {
 };
 
 EpisodeDescription.propTypes = {
-  children: PropTypes.element.isRequired,
+  // Notrequired because content can be put in "dangeroysly" injecting HTML.
+  children: PropTypes.element,
   modifier: PropTypes.string
 };
 
