@@ -45,6 +45,7 @@ class EpisodePage extends Component {
         <HeaderContainer />
         <EpisodePageGrid
           modifier="episode-page-grid--reverse"
+          style={{ marginTop: '2rem' }}
           firstCell={this.firstCell()}
           secondCell={this.secondCell()}
         />

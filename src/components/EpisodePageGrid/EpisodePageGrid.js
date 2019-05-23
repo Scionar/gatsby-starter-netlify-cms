@@ -4,8 +4,8 @@ import classNames from 'classnames';
 
 import './EpisodePageGrid.scss';
 
-const EpisodePageGrid = ({ modifier, firstCell, secondCell }) => (
-  <div className={classNames('episode-page-grid', modifier)}>
+const EpisodePageGrid = ({ modifier, style, firstCell, secondCell }) => (
+  <div className={classNames('episode-page-grid', modifier)} style={style}>
     <div className="episode-page-grid__first-cell">{firstCell}</div>
     <div className="episode-page-grid__second-cell">{secondCell}</div>
   </div>
@@ -20,7 +20,8 @@ EpisodePageGrid.propTypes = {
     PropTypes.element.isRequired,
     PropTypes.arrayOf(PropTypes.element).isRequired
   ]),
-  modifier: PropTypes.string
+  modifier: PropTypes.string,
+  style: PropTypes.object
 };
 
 export default EpisodePageGrid;
