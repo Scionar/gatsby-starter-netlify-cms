@@ -28,7 +28,9 @@ const EpisodeCard = ({
       <div className="episode-card__running-number">{styledRunningNumber}</div>
       <img className="episode-card__cover-image" src={coverImage} alt={title} />
       <div className="episode-card__info">
-        <div className="episode-card__title">{title}</div>
+        <Link className="episode-card__title-link" to={link}>
+          <h3 className="episode-card__title">{title}</h3>
+        </Link>
         <div className="episode-card__description">{description}</div>
         <Link className="episode-card__link" to={link}>
           More

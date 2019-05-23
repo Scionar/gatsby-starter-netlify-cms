@@ -53,9 +53,19 @@
   }
 }
 
+.episode-card__title-link {
+  color: $color__black;
+
+  &:visited {
+    color: $color__black;
+  }
+}
+
 .episode-card__title {
+  font-size: 1rem;
   font-weight: bold;
   text-decoration: underline;
+  margin: 0;
 }
 
 .episode-card__description {
