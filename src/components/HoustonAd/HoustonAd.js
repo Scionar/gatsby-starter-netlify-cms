@@ -10,7 +10,7 @@ const HoustonAd = ({ modifier }) => (
     <img className="houston-ad__logo" src={HoustonLogo} alt="Houston Inc." />
     <a
       className="houston-ad__link"
-      href="https//www.houston-inc.com"
+      href="https://www.houston-inc.com"
       alt="Houston Inc. website"
     >
       wwww.houston-inc.com

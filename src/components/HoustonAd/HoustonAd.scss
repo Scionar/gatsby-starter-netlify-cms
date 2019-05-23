@@ -17,4 +17,8 @@
   margin: 0.9rem 0 0;
   text-decoration: none;
   letter-spacing: 1px;
+
+  &:visited {
+    color: $color__edward;
+  }
 }
