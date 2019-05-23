@@ -1,9 +1,16 @@
 @import '../../styles/variables.scss';
 
+$gap-between: 5rem;
+$gap-half: $gap-between / 2;
+
 .two-cell-grid {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
+  @include breakpoint(m) {
+    flex-wrap: nowrap;
+  }
 }
 
 .two-cell-grid--reverse {
@@ -13,17 +20,34 @@
 }
 
 .two-cell-grid__first-cell {
+  box-sizing: border-box;
   flex: 0 0 100%;
 
   @include breakpoint(m) {
-    flex: 0 0 50%;
+    flex: 0 0 calc(50% - #{$gap-half});
+    margin: 0 $gap-between 0 0;
+  }
+
+  .two-cell-grid--reverse & {
+    @include breakpoint(m) {
+      margin: 0;
+    }
   }
 }
 
 .two-cell-grid__second-cell {
+  box-sizing: border-box;
   flex: 0 0 100%;
+  margin: $gap-between 0 0 0;
 
   @include breakpoint(m) {
-    flex: 0 0 50%;
+    flex: 0 0 calc(50% - #{$gap-half});
+    margin: 0;
+  }
+
+  .two-cell-grid--reverse & {
+    @include breakpoint(m) {
+      margin: 0 $gap-between 0 0;
+    }
   }
 }
