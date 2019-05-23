@@ -1,6 +1,6 @@
 # Nudging Pixels
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/af66ef6a-72b2-459c-9743-f34346d506dc/deploy-status)](https://app.netlify.com/sites/nudget-testing/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/af66ef6a-72b2-459c-9743-f34346d506dc/deploy-status)](https://app.netlify.com/sites/nudging-pixels/deploys)
 
 Home page for Nudging Pixels podcast. Page is build with [Netlify](https://www.netlify.com/), content is managed with [Netlify CMS](https://www.netlifycms.org/) and all is converted to static with [Gatsby](https://www.gatsbyjs.org/). Repository is based on [Gatsby + Netlify CMS Starter](https://github.com/netlify-templates/gatsby-starter-netlify-cms).
 
