@@ -60,7 +60,7 @@ exports.createPages = ({ actions, graphql }) => {
       const guid = edge.node.guid;
       const title = edge.node.title;
       createPage({
-        path: `/episode/${slugify(title)}`,
+        path: `/episode/${slugify(title, { remove: /[?*+~.()'"!:@]/g })}`,
         component: path.resolve(`src/templates/episode.js`),
         // additional data can be passed via context
         context: {
