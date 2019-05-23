@@ -6,7 +6,8 @@ import {
   Layout,
   TwoCellGrid,
   EpisodeDescription,
-  EpisodeImage
+  EpisodeImage,
+  EpisodeTitle
 } from '../components';
 import { HeaderContainer, FooterContainer } from '../containers';
 
@@ -22,7 +23,7 @@ class EpisodePage extends Component {
     return (
       <>
         <EpisodeImage src={node.itunes.image.attrs.href} alt={node.title} />
-        <div>{node.title}</div>
+        <EpisodeTitle style={{ marginTop: '2rem' }}>{node.title}</EpisodeTitle>
       </>
     );
   }
