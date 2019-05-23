@@ -48,11 +48,12 @@
     "develop": "npm run clean && gatsby develop",
     "serve": "gatsby serve",
     "format": "prettier --write  \"{gatsby-*.js,src/**/*.{js,jsx,json,scss}}\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "npm test && pretty-quick --staged"
     }
   },
   "devDependencies": {
@@ -60,6 +61,7 @@
     "eslint-plugin-prettier": "^3.1.0",
     "http-proxy-middleware": "^0.19.1",
     "husky": "^2.3.0",
+    "jest": "^24.8.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.17.1",
     "pretty-quick": "^1.10.0",
