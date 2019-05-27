@@ -1,5 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
+import _ from 'lodash';
 
 import { episodePath, stripHtml, truncate } from '../utils';
 import { EpisodeCard } from '../components';
@@ -10,6 +11,11 @@ const EpisodeFeedContainer = ({ data }) => {
   return episodes.map((node, index) => {
     // Set modifier class if index is uneven.
     const modifier = index % 2 === 0 ? undefined : 'episode-card--poked-right';
+    const image = _.get(
+      node,
+      'localImage.childImageSharp.fluid.src',
+      undefined
+    );
 
     return (
       <EpisodeCard
@@ -17,7 +23,7 @@ const EpisodeFeedContainer = ({ data }) => {
         modifier={modifier}
         style={{ marginTop: '4rem' }}
         runningNumber={node.itunes.episode}
-        coverImage={node.itunes.image.attrs.href}
+        coverImage={image}
         title={node.title}
         description={truncate(stripHtml(node.content), 150)}
         link={episodePath(node.title)}
@@ -45,6 +51,21 @@ const EpisodeFeedContainerQuery = props => (
               }
               season
               episode
+            }
+            localImage {
+              childImageSharp {
+                fluid(
+                  maxWidth: 295
+                  maxHeight: 295
+                  quality: 70
+                  cropFocus: CENTER
+                ) {
+                  aspectRatio
+                  src
+                  srcSet
+                  sizes
+                }
+              }
             }
           }
         }
