@@ -4,16 +4,17 @@ import classNames from 'classnames';
 import { Link } from 'gatsby';
 
 import './Logo.scss';
-import NPLogo from '../../img/np-logo.png';
 
-const Logo = ({ modifier }) => (
-  <Link className={classNames('logo', modifier)} to="/">
-    <img className="logo__image" src={NPLogo} alt="Nudging Pixels" />
+const Logo = ({ modifier, style, image }) => (
+  <Link className={classNames('logo', modifier)} to="/" style={style}>
+    <img className="logo__image" src={image} alt="Nudging Pixels" />
   </Link>
 );
 
 Logo.propTypes = {
-  modifier: PropTypes.string
+  modifier: PropTypes.string,
+  style: PropTypes.object,
+  image: PropTypes.string
 };
 
 export default Logo;
