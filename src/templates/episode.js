@@ -26,9 +26,15 @@ class EpisodePage extends Component {
 
   firstCell() {
     const node = this.props.data.feedAnchorFm;
+    const image = _.get(
+      node,
+      'localImage.childImageSharp.fluid.src',
+      undefined
+    );
+
     return (
       <>
-        <EpisodeImage src={node.itunes.image.attrs.href} alt={node.title} />
+        <EpisodeImage src={image} alt={node.title} />
         <EpisodeTitle style={{ marginTop: '2rem' }}>{node.title}</EpisodeTitle>
         <EpisodePlayer url={node.link} style={{ marginTop: '2rem' }} />
         <EpisodeAvailableOnContainer />
@@ -94,6 +100,16 @@ export const pageQuery = graphql`
         image {
           attrs {
             href
+          }
+        }
+      }
+      localImage {
+        childImageSharp {
+          fluid(maxWidth: 240, maxHeight: 240, quality: 70, cropFocus: CENTER) {
+            aspectRatio
+            src
+            srcSet
+            sizes
           }
         }
       }

@@ -1,7 +1,10 @@
 const _ = require('lodash');
 const path = require('path');
 const slugify = require('slugify');
-const { createFilePath } = require('gatsby-source-filesystem');
+const {
+  createFilePath,
+  createRemoteFileNode
+} = require('gatsby-source-filesystem');
 const { fmImagesToRelative } = require('gatsby-remark-relative-images');
 
 exports.createPages = ({ actions, graphql }) => {
@@ -95,16 +98,42 @@ exports.createPages = ({ actions, graphql }) => {
   });
 };
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions;
+exports.onCreateNode = async ({
+  node,
+  actions,
+  store,
+  getNode,
+  createNodeId,
+  cache
+}) => {
+  const { createNode, createNodeField } = actions;
   fmImagesToRelative(node); // convert image paths for gatsby images
+  const nodeType = node.internal.type;
 
-  if (node.internal.type === `MarkdownRemark`) {
+  if (nodeType === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode });
     createNodeField({
       name: `slug`,
       node,
       value
     });
+  }
+  if (nodeType === 'FeedAnchorFM') {
+    const url = _.get(node, 'itunes.image.attrs.href', null);
+    if (url) {
+      const fileNode = await createRemoteFileNode({
+        url: node.itunes.image.attrs.href,
+        store,
+        cache,
+        createNode,
+        parentNodeId: node.id,
+        createNodeId
+      });
+
+      if (fileNode) {
+        // Link File node to FeedAnchorFM node at field image.
+        node.localImage___NODE = fileNode.id;
+      }
+    }
   }
 };
