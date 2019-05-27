@@ -18,3 +18,4 @@ export {
 export {
   default as EpisodeAvailableOnItem
 } from './EpisodeAvailableOnItem/EpisodeAvailableOnItem';
+export { default as MetaData } from './MetaData/MetaData';

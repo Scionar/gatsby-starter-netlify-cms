@@ -13,7 +13,8 @@ import {
 import {
   HeaderContainer,
   FooterContainer,
-  EpisodeAvailableOnContainer
+  EpisodeAvailableOnContainer,
+  EpisodeMetaDataContainer
 } from '../containers';
 
 class EpisodePage extends Component {
@@ -46,16 +47,19 @@ class EpisodePage extends Component {
     const node = this.props.data.feedAnchorFm;
 
     return (
-      <Layout>
-        <HeaderContainer />
-        <EpisodePageGrid
-          modifier="episode-page-grid--reverse"
-          style={{ marginTop: '2rem' }}
-          firstCell={this.firstCell()}
-          secondCell={this.secondCell()}
-        />
-        <FooterContainer />
-      </Layout>
+      <>
+        <EpisodeMetaDataContainer guid={node.guid} />
+        <Layout>
+          <HeaderContainer />
+          <EpisodePageGrid
+            modifier="episode-page-grid--reverse"
+            style={{ marginTop: '2rem' }}
+            firstCell={this.firstCell()}
+            secondCell={this.secondCell()}
+          />
+          <FooterContainer />
+        </Layout>
+      </>
     );
   }
 }

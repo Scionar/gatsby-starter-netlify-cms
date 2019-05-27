@@ -4,3 +4,6 @@ export { default as EpisodeFeedContainer } from './EpisodeFeedContainer';
 export {
   default as EpisodeAvailableOnContainer
 } from './EpisodeAvailableOnContainer';
+export {
+  default as EpisodeMetaDataContainer
+} from './EpisodeMetaDataContainer';

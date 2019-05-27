@@ -22,6 +22,12 @@ Secrets are managed with environment variables. If env files are used, create en
 ```
 # Anchor FM RSS feed URL
 RSS_FEED_URL=
+
+# Canonical
+GATSBY_CANONICAL_URL=
+
+# Website URL
+GATSBY_WEBSITE_URL=
 ```
 
 ## Development
