@@ -19,3 +19,6 @@ export {
   default as EpisodeAvailableOnItem
 } from './EpisodeAvailableOnItem/EpisodeAvailableOnItem';
 export { default as MetaData } from './MetaData/MetaData';
+export {
+  default as EpisodeAndSeasonNumber
+} from './EpisodeAndSeasonNumber/EpisodeAndSeasonNumber';

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import _ from 'lodash';
+import moment from 'moment';
 
 import {
   Layout,
@@ -9,7 +10,8 @@ import {
   EpisodeDescription,
   EpisodeImage,
   EpisodeTitle,
-  EpisodePlayer
+  EpisodePlayer,
+  EpisodeAndSeasonNumber
 } from '../components';
 import {
   HeaderContainer,
@@ -32,12 +34,21 @@ class EpisodePage extends Component {
       'localImage.childImageSharp.fluid.src',
       undefined
     );
+    const season = _.get(node, 'itunes.season', undefined);
+    const episode = _.get(node, 'itunes.episode', undefined);
+    const date = moment(node.pubDate).format('Do MMMM YYYY');
 
     return (
       <>
         <EpisodeImage src={image} alt={node.title} />
         <EpisodeTitle style={{ marginTop: '2rem' }}>{node.title}</EpisodeTitle>
-        <EpisodePlayer url={node.link} style={{ marginTop: '2rem' }} />
+        <EpisodeAndSeasonNumber
+          style={{ marginTop: '1rem' }}
+          date={date}
+          seasonNumber={season}
+          EpisodeNumber={episode}
+        />
+        <EpisodePlayer url={node.link} style={{ marginTop: '1rem' }} />
         <EpisodeAvailableOnContainer />
       </>
     );
