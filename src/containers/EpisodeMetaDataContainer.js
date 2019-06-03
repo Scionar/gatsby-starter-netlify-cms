@@ -12,7 +12,7 @@ class EpisodeMetaDataContainer extends Component {
     // components can't have dynamic querys.
     const metaData =
       this.props.data.allFeedAnchorFm.nodes.find(
-        node => (node.guid = this.props.guid)
+        node => node.guid === this.props.guid
       ) || {};
 
     const description = truncate(stripHtml(metaData.content), 150);
