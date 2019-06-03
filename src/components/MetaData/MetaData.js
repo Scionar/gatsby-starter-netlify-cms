@@ -132,11 +132,14 @@ MetaData.propTypes = {
   twitterUrl: PropTypes.string,
   twitterAccount: PropTypes.string,
   shareImage: PropTypes.string,
-  shareImageHeight: PropTypes.string,
-  shareImageWidth: PropTypes.string,
+  shareImageHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  shareImageWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   publisherLogo: PropTypes.string,
-  publisherLogoHeight: PropTypes.string,
-  publisherLogoWidth: PropTypes.string
+  publisherLogoHeight: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
+  publisherLogoWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 export default MetaData;

@@ -7,11 +7,9 @@ import { MetaData } from '../components';
 import { stripHtml, truncate } from '../utils';
 
 class EpisodeMetaDataContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
+    // Pick the right item from feed. This is not done in GraphQL query, because
+    // components can't have dynamic querys.
     const metaData =
       this.props.data.allFeedAnchorFm.nodes.find(
         node => (node.guid = this.props.guid)
@@ -28,12 +26,16 @@ class EpisodeMetaDataContainer extends Component {
         siteUrl={process.env.GATSBY_WEBSITE_URL}
         twitterUrl={'https://twitter.com/nudgingpixels'}
         twitterAccount={'@NudgingPixels'}
-        shareImage={_.get(metaData, 'itunes.image.attrs.href', undefined)}
-        shareImageHeight={undefined} // todo: Can be defined after images are locally optimized.
-        shareImageWidth={undefined} // todo: Can be defined after images are locally optimized.
+        shareImage={_.get(
+          metaData,
+          'localImage.childImageSharp.fixed.src',
+          undefined
+        )}
+        shareImageHeight={240}
+        shareImageWidth={240}
         publisherLogo={NpLogo}
-        publisherLogoHeight={undefined} // todo: Can be defined after images are locally optimized.
-        publisherLogoWidth={undefined} // todo: Can be defined after images are locally optimized.
+        publisherLogoHeight={264}
+        publisherLogoWidth={436}
       />
     );
   }
@@ -48,16 +50,12 @@ const EpisodeMetaDataContainerQuery = props => (
             guid
             title
             content
-            link
-            itunes {
-              summary
-              image {
-                attrs {
-                  href
+            localImage {
+              childImageSharp {
+                fixed(width: 240, height: 240, quality: 70, cropFocus: CENTER) {
+                  src
                 }
               }
-              season
-              episode
             }
           }
         }
