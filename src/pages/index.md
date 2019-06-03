@@ -1,4 +1,5 @@
 ---
+templateKey: index-page
 title: Nudging Pixels
 description: >
   If you think Alvar Aalto, Iittala and Marimekko are what Finnish design is
@@ -10,4 +11,3 @@ description: >
   original podcast by Houston Inc. New episodes are out on the second Friday of
   every month.
 ---
-
