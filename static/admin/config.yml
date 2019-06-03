@@ -4,12 +4,13 @@ backend:
 
 media_folder: static/img
 public_folder: /img
-
-  - name: "pages"
-    label: "Pages"
+collections:
+  - label: 'Pages'
+    name: 'pages'
     files:
-      - file: "src/pages/index.md"
-        label: "Landing Page"
-        name: "index"
+      - label: 'Landing Page'
+        file: 'src/pages/index.md'
+        name: 'index'
         fields:
-          - { label: "Title", name: "title", widget: "string" }
+          - { label: Title, name: title, widget: 'string' }
+          - { label: Description, name: description, widget: 'string' }

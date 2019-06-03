@@ -13,6 +13,8 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <HeaderContainer />
+      <h1>{data.markdownRemark.frontmatter.title}</h1>
+      <p>{data.markdownRemark.frontmatter.description}</p>
       <EpisodeFeedContainer />
       <FooterContainer />
     </Layout>
@@ -34,6 +36,7 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         title
+        description
       }
     }
   }
