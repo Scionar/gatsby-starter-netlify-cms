@@ -5,8 +5,8 @@ import classNames from 'classnames';
 import HoustonLogo from '../../img/houston-logo.svg';
 import './HoustonAd.scss';
 
-const HoustonAd = ({ modifier }) => (
-  <div className={classNames('houston-ad', modifier)}>
+const HoustonAd = ({ modifier, style }) => (
+  <div className={classNames('houston-ad', modifier)} style={style}>
     <img className="houston-ad__logo" src={HoustonLogo} alt="Houston Inc." />
     <a
       className="houston-ad__link"
@@ -19,7 +19,8 @@ const HoustonAd = ({ modifier }) => (
 );
 
 HoustonAd.propTypes = {
-  modifier: PropTypes.string
+  modifier: PropTypes.string,
+  style: PropTypes.object
 };
 
 export default HoustonAd;
