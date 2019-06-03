@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
+import _ from 'lodash';
 
-import { Layout } from '../components';
+import { Layout, LandingPageContent } from '../components';
 import {
   HeaderContainer,
   FooterContainer,
@@ -13,8 +14,15 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <HeaderContainer />
-      <h1>{data.markdownRemark.frontmatter.title}</h1>
-      <p>{data.markdownRemark.frontmatter.description}</p>
+      <LandingPageContent
+        style={{ marginTop: '3rem' }}
+        title={_.get(data, 'markdownRemark.frontmatter.title', undefined)}
+        description={_.get(
+          data,
+          'markdownRemark.frontmatter.description',
+          undefined
+        )}
+      />
       <EpisodeFeedContainer />
       <FooterContainer />
     </Layout>

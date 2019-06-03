@@ -1,0 +1,19 @@
+@import '../../styles/variables.scss';
+
+.landing-page-content {
+}
+
+.landing-page-content__title {
+  color: $color__prelude;
+}
+
+.landing-page-content__content {
+  color: $color__silver-chalice;
+  line-height: 1.8rem;
+  transition: width 0.25s;
+  width: 100%;
+
+  @include breakpoint(m) {
+    width: 70%;
+  }
+}

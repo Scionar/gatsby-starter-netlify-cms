@@ -22,3 +22,6 @@ export { default as MetaData } from './MetaData/MetaData';
 export {
   default as EpisodeAndSeasonNumber
 } from './EpisodeAndSeasonNumber/EpisodeAndSeasonNumber';
+export {
+  default as LandingPageContent
+} from './LandingPageContent/LandingPageContent';
