@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 import NpLogo from '../img/np-logo.png';
 import { MetaData } from '../components';
-import { stripHtml, truncate } from '../utils';
+import { stripHtml, truncate, episodePath } from '../utils';
 
 class EpisodeMetaDataContainer extends Component {
   render() {
@@ -16,14 +16,18 @@ class EpisodeMetaDataContainer extends Component {
       ) || {};
 
     const description = truncate(stripHtml(metaData.content), 150);
+    const siteUrl =
+      process.env.GATSBY_WEBSITE_URL + episodePath(metaData.title);
 
     return (
       <MetaData
+        baseUrl={process.env.GATSBY_WEBSITE_URL}
+        type="CreativeWork"
         title={metaData.title}
         description={description}
         siteName={'Nudging Pixels'}
         canonical={process.env.GATSBY_CANONICAL_URL}
-        siteUrl={process.env.GATSBY_WEBSITE_URL}
+        siteUrl={siteUrl}
         twitterUrl={'https://twitter.com/nudgingpixels'}
         twitterAccount={'@NudgingPixels'}
         shareImage={_.get(
