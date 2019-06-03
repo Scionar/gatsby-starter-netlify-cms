@@ -5,12 +5,13 @@ import Helmet from 'react-helmet';
 /**
  * Site metadata formatter.
  *
+ * @param {string} baseUrl - Website base URL (Like canonical, but with https:// prefix)
  * @param {string} title - Page title, example article name.
  * @param {string} type - Page type. (https://schema.org/docs/full.html#datatype_tree)
  * @param {string} siteName - Website name
  * @param {string} description - Content description.
  * @param {string} canonical - Website domain
- * @param {string} siteUrl - Website URL (Like canonical, but with https:// prefix)
+ * @param {string} siteUrl - Current page's URL
  * @param {string} twitterUrl - Twitter page URL
  * @param {string} twitterAccount - Twitter account. This should have @ prefix.
  * @param {string} shareImage - Page hero image URL
@@ -21,6 +22,7 @@ import Helmet from 'react-helmet';
  * @param {string} publisherLogoWidth - Page brand logo width.
  */
 const MetaData = ({
+  baseUrl,
   title,
   type,
   siteName,
@@ -80,7 +82,7 @@ const MetaData = ({
                           shareImage
                             ? `"image": {
                                 "@type": "ImageObject",
-                                "url": "${shareImage}"
+                                "url": "${baseUrl + shareImage}"
                                 ${
                                   shareImageHeight && shareImageWidth ? `,` : ``
                                 }
@@ -97,7 +99,7 @@ const MetaData = ({
                             "name": "${siteName}",
                             "logo": {
                                 "@type": "ImageObject",
-                                "url": "${publisherLogo}"
+                                "url": "${baseUrl + publisherLogo}"
                                 ${
                                   publisherLogoHeight && publisherLogoWidth
                                     ? `,`
@@ -123,6 +125,7 @@ const MetaData = ({
 };
 
 MetaData.propTypes = {
+  baseUrl: PropTypes.string,
   title: PropTypes.string,
   type: PropTypes.string,
   siteName: PropTypes.string,
