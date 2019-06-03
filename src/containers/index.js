@@ -7,3 +7,4 @@ export {
 export {
   default as EpisodeMetaDataContainer
 } from './EpisodeMetaDataContainer';
+export { default as LanderMetaDataContainer } from './LanderMetaDataContainer';

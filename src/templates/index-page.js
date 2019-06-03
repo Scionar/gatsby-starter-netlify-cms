@@ -7,25 +7,36 @@ import { Layout, LandingPageContent } from '../components';
 import {
   HeaderContainer,
   FooterContainer,
-  EpisodeFeedContainer
+  EpisodeFeedContainer,
+  LanderMetaDataContainer
 } from '../containers';
 
 const IndexPage = ({ data }) => {
+  const title = _.get(data, 'markdownRemark.frontmatter.title', undefined);
+  const description = _.get(
+    data,
+    'markdownRemark.frontmatter.description',
+    undefined
+  );
+
   return (
-    <Layout>
-      <HeaderContainer />
-      <LandingPageContent
-        style={{ marginTop: '3rem' }}
-        title={_.get(data, 'markdownRemark.frontmatter.title', undefined)}
-        description={_.get(
-          data,
-          'markdownRemark.frontmatter.description',
-          undefined
-        )}
-      />
-      <EpisodeFeedContainer />
-      <FooterContainer />
-    </Layout>
+    <>
+      <LanderMetaDataContainer title={title} description={description} />
+      <Layout>
+        <HeaderContainer />
+        <LandingPageContent
+          style={{ marginTop: '3rem' }}
+          title={_.get(data, 'markdownRemark.frontmatter.title', undefined)}
+          description={_.get(
+            data,
+            'markdownRemark.frontmatter.description',
+            undefined
+          )}
+        />
+        <EpisodeFeedContainer />
+        <FooterContainer />
+      </Layout>
+    </>
   );
 };
 
