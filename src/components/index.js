@@ -25,3 +25,4 @@ export {
 export {
   default as LandingPageContent
 } from './LandingPageContent/LandingPageContent';
+export { default as Player } from './Player/Player';

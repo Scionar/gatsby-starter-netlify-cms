@@ -1,0 +1,69 @@
+@import '../../styles/variables.scss';
+
+.player {
+  background-color: $color__seashell;
+  display: flex;
+  flex-direction: column;
+  height: 8rem;
+}
+
+.player__content {
+  align-items: center;
+  display: flex;
+  flex: 1 0 auto;
+  margin: 0 1rem;
+  position: relative;
+}
+
+.player__timer {
+  color: $color__gray;
+  font-size: 0.7rem;
+  position: absolute;
+  left: 0rem;
+  bottom: 0.5rem;
+}
+
+.player__duration {
+  color: $color__gray;
+  font-size: 0.7rem;
+  position: absolute;
+  right: 0rem;
+  bottom: 0.5rem;
+}
+
+.player__progress-bar {
+  background-color: $color__portage;
+  flex: 0 0 0.9rem;
+}
+
+.player__back-button {
+  border: 0;
+  padding: 0;
+}
+
+.player__back-button-icon {
+  width: 100%;
+  max-height: 25px;
+}
+
+.player__main-button {
+  background-color: $color__gray;
+  border: 0;
+  border-radius: 50%;
+  display: block;
+  height: 3rem;
+  margin: 0 0 0 0.9rem;
+  width: 3rem;
+}
+
+.player__play-button-icon {
+  max-height: 23px;
+  max-width: 23px;
+  vertical-align: middle;
+}
+
+.player__pause-button-icon {
+  max-height: 23px;
+  max-width: 23px;
+  vertical-align: middle;
+}
