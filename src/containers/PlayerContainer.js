@@ -130,6 +130,7 @@ class PlayerContainer extends Component {
   render() {
     return (
       <Player
+        style={{ marginTop: '1rem' }}
         started={this.state.started}
         paused={this.state.paused}
         mainButtonAction={this.mainButtonAction}
