@@ -10,4 +10,9 @@ describe('playetTimeFormatter', () => {
     expect(playerTimeFormatter(undefined)).toEqual('0:00');
     expect(playerTimeFormatter(null)).toEqual('0:00');
   });
+
+  it('prevents float numbers to break formatting', () => {
+    const seconds = 1637.2;
+    expect(playerTimeFormatter(seconds)).toEqual('27:17');
+  });
 });
