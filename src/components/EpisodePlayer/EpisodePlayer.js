@@ -5,6 +5,10 @@ import classNames from 'classnames';
 import { episodePlayerUrl } from '../../utils';
 import './EpisodePlayer.scss';
 
+/*
+ * This component is going to be deprecated because of Player and
+ * PlayerContainer components doing the player.
+ */
 const EpisodePlayer = ({ url, modifier, style }) => {
   return (
     <iframe

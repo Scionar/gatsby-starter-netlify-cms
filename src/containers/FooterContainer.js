@@ -4,7 +4,7 @@ import { Footer, HoustonAd } from '../components';
 
 const FooterContainer = () => (
   <Footer>
-    <HoustonAd />
+    <HoustonAd style={{ marginTop: '5rem' }} />
   </Footer>
 );
 

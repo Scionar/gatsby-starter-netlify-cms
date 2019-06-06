@@ -8,3 +8,4 @@ export {
   default as EpisodeMetaDataContainer
 } from './EpisodeMetaDataContainer';
 export { default as LanderMetaDataContainer } from './LanderMetaDataContainer';
+export { default as PlayerContainer } from './PlayerContainer';
