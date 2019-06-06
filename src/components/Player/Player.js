@@ -16,7 +16,8 @@ const Player = ({
   mainButtonAction,
   backButtonAction,
   timer,
-  duration
+  duration,
+  progressBarWidth
 }) => (
   <div className={classNames('player', modifier)} style={style}>
     <div className="player__content">
@@ -53,7 +54,12 @@ const Player = ({
       <div className="player__timer">{playerTimeFormatter(timer)}</div>
       <div className="player__duration">{playerTimeFormatter(duration)}</div>
     </div>
-    <div className="player__progress-bar" />
+    <div className="player__progress-bar">
+      <div
+        className="player__progress-bar-line"
+        style={{ width: progressBarWidth + '%' }}
+      />
+    </div>
   </div>
 );
 
@@ -65,7 +71,8 @@ Player.propTypes = {
   mainButtonAction: PropTypes.func,
   backButtonAction: PropTypes.func,
   timer: PropTypes.number,
-  duration: PropTypes.number
+  duration: PropTypes.number,
+  progressBarWidth: PropTypes.number
 };
 
 Player.defaultProps = {

@@ -28,6 +28,7 @@ class PlayerContainer extends Component {
     this.disableTimerUpdateInterval = this.disableTimerUpdateInterval.bind(
       this
     );
+    this.progressBarWidth = this.progressBarWidth.bind(this);
 
     // Selected episode
     this.episode = this.props.data.allFeedAnchorFm.nodes.find(
@@ -122,6 +123,10 @@ class PlayerContainer extends Component {
     this.rewind();
   }
 
+  progressBarWidth() {
+    return (this.state.timer / this.state.duration) * 100;
+  }
+
   render() {
     return (
       <Player
@@ -131,6 +136,7 @@ class PlayerContainer extends Component {
         backButtonAction={this.backButtonAction}
         timer={this.state.timer}
         duration={this.state.duration}
+        progressBarWidth={this.progressBarWidth()}
       />
     );
   }

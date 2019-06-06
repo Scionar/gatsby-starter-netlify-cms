@@ -36,6 +36,12 @@
   flex: 0 0 0.9rem;
 }
 
+.player__progress-bar-line {
+  background-color: $color__prelude;
+  height: 100%;
+  width: 0px;
+}
+
 .player__back-button {
   border: 0;
   padding: 0;
