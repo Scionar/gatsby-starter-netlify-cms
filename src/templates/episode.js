@@ -10,14 +10,14 @@ import {
   EpisodeDescription,
   EpisodeImage,
   EpisodeTitle,
-  EpisodePlayer,
   EpisodeAndSeasonNumber
 } from '../components';
 import {
   HeaderContainer,
   FooterContainer,
   EpisodeAvailableOnContainer,
-  EpisodeMetaDataContainer
+  EpisodeMetaDataContainer,
+  PlayerContainer
 } from '../containers';
 
 class EpisodePage extends Component {
@@ -48,7 +48,7 @@ class EpisodePage extends Component {
           seasonNumber={season}
           EpisodeNumber={episode}
         />
-        <EpisodePlayer url={node.link} style={{ marginTop: '1rem' }} />
+        <PlayerContainer guid={node.guid} />
         <EpisodeAvailableOnContainer />
       </>
     );
