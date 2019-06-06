@@ -6,7 +6,7 @@ import './EpisodeAvailableOn.scss';
 
 const EpisodeAvailableOn = ({ modifier, style, children }) => {
   return (
-    <div className={classNames('episode-available-on', modifier)}>
+    <div className={classNames('episode-available-on', modifier)} style={style}>
       <div className="episode-available-on__header-container">
         <span className="episode-available-on__header">Available on...</span>
       </div>

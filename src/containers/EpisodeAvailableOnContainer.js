@@ -58,7 +58,11 @@ class EpisodeAvailableOnContainer extends Component {
   }
 
   render() {
-    return <EpisodeAvailableOn>{this.renderItems()}</EpisodeAvailableOn>;
+    return (
+      <EpisodeAvailableOn style={{ marginTop: '3rem' }}>
+        {this.renderItems()}
+      </EpisodeAvailableOn>
+    );
   }
 }
 
