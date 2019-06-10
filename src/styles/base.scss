@@ -1,9 +1,12 @@
 @import 'variables';
 
+html {
+  font-family: sans-serif;
+  font-size: calc(12px + 0.6vmin);
+}
+
 body {
   background-color: $color__tranquil;
-  font-family: sans-serif;
-  font-size: 18px;
   margin: 0;
 }
 
