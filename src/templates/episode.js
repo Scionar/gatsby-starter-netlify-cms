@@ -49,6 +49,11 @@ class EpisodePage extends Component {
           EpisodeNumber={episode}
         />
         <PlayerContainer guid={node.guid} />
+        <EpisodeDescription
+          modifier="episode-description--hide-on-desktop"
+          style={{ marginTop: '2rem' }}
+          dangerouslySetInnerHTML={{ __html: node.content }}
+        />
         <EpisodeAvailableOnContainer />
       </>
     );
@@ -57,7 +62,10 @@ class EpisodePage extends Component {
   secondCell() {
     const node = this.props.data.feedAnchorFm;
     return (
-      <EpisodeDescription dangerouslySetInnerHTML={{ __html: node.content }} />
+      <EpisodeDescription
+        modifier="episode-description--hide-on-mobile"
+        dangerouslySetInnerHTML={{ __html: node.content }}
+      />
     );
   }
 

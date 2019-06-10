@@ -14,3 +14,17 @@
     margin: 0.5rem 0;
   }
 }
+
+.episode-description--hide-on-mobile {
+  display: none;
+
+  @include breakpoint(m) {
+    display: block;
+  }
+}
+
+.episode-description--hide-on-desktop {
+  @include breakpoint(m) {
+    display: none;
+  }
+}
