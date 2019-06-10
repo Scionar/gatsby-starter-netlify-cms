@@ -22,21 +22,22 @@
 .episode-card__running-number {
   align-items: center;
   color: $color__silver;
-  display: flex;
+  display: none;
   flex: 0 0 25%;
   flex-direction: column;
   font-size: 2.5rem;
   justify-content: center;
 
   @include breakpoint(m) {
+    display: flex;
     flex: 0 0 4rem;
     margin: 0 2rem 0 0;
   }
 }
 
 .episode-card__cover-image {
-  flex: 0 0 50%;
-  width: 50%;
+  flex: 0 0 100%;
+  width: 100%;
 
   @include breakpoint(m) {
     flex: 0 0 11rem;
@@ -56,9 +57,26 @@
 
 .episode-card__title-link {
   color: $color__black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  @include breakpoint(m) {
+    display: inline;
+  }
 
   &:visited {
     color: $color__black;
+  }
+}
+
+.episode-card__title-running-number {
+  color: $color__silver;
+  font-size: 2rem;
+  font-weight: bold;
+
+  @include breakpoint(m) {
+    display: none;
   }
 }
 
@@ -66,7 +84,11 @@
   font-size: 1rem;
   font-weight: bold;
   text-decoration: underline;
-  margin: 0;
+  margin: 0 0 0 1rem;
+
+  @include breakpoint(m) {
+    margin: 0;
+  }
 }
 
 .episode-card__description {
