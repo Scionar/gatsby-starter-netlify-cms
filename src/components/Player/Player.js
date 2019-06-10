@@ -37,17 +37,17 @@ const Player = ({
         type="button"
         onClick={mainButtonAction}
       >
-        {paused || !started ? (
+        {!started || paused ? (
           <img
-            className="player__play-button-icon"
-            src={pauseIcon}
-            alt={'Pause episode'}
+            className="player__main-button-icon"
+            src={playIcon}
+            alt={'Play episode'}
           />
         ) : (
           <img
-            className="player__play-button-icon"
-            src={playIcon}
-            alt={'Play episode'}
+            className="player__main-button-icon"
+            src={pauseIcon}
+            alt={'Pause episode'}
           />
         )}
       </button>
