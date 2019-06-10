@@ -68,6 +68,10 @@
   &:visited {
     color: $color__black;
   }
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .episode-card__title-running-number {
