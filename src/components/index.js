@@ -26,3 +26,4 @@ export {
   default as LandingPageContent
 } from './LandingPageContent/LandingPageContent';
 export { default as Player } from './Player/Player';
+export { default as SeasonDropdown } from './SeasonDropdown/SeasonDropdown';

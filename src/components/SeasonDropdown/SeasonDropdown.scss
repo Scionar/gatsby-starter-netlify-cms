@@ -1,0 +1,29 @@
+@import '../../styles/variables.scss';
+
+.season-dropdown__header {
+  color: $color__silver;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+.season-dropdown__toggle-button {
+  background-color: transparent;
+  border: 0;
+  height: 2.5rem;
+  margin: 0 0 0 1rem;
+  overflow: hidden;
+  vertical-align: middle;
+  width: 2.5rem;
+
+  &:before {
+    color: $color__portage;
+    content: '\025B8';
+    display: inline-block;
+    font-size: 3.5rem;
+    line-height: 1.5rem;
+
+    .season-dropdown--open & {
+      content: '\025BE';
+    }
+  }
+}
