@@ -1,7 +1,11 @@
 @import '../../styles/variables.scss';
 
 .header {
-  align-items: flex-start;
+  align-items: center;
   display: flex;
   flex-direction: column;
+
+  @include breakpoint(m) {
+    align-items: flex-start;
+  }
 }
