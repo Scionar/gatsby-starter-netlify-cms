@@ -34,12 +34,9 @@ class SeasonDropdown extends Component {
         })}
         style={this.props.style}
       >
-        <div className="season-dropdown__header">
+        <div className="season-dropdown__header" onClick={this.toggleOpen}>
           {this.props.header}
-          <button
-            className="season-dropdown__toggle-button"
-            onClick={this.toggleOpen}
-          />
+          <button className="season-dropdown__toggle-button" />
         </div>
         {this.state.open && (
           <div className="season-dropdown__content">{this.props.children}</div>
