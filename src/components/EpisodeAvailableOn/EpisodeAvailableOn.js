@@ -17,7 +17,7 @@ const EpisodeAvailableOn = ({ modifier, style, children }) => {
 
 EpisodeAvailableOn.propTypes = {
   modifier: PropTypes.string,
-  style: PropTypes.string,
+  style: PropTypes.object,
   children: PropTypes.oneOfType([
     PropTypes.element.isRequired,
     PropTypes.arrayOf(PropTypes.element).isRequired
