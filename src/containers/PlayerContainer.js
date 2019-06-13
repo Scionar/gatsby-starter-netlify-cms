@@ -27,7 +27,9 @@ class PlayerContainer extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    // Episode is switched / stopped
     if (this.props.episodeUrl !== prevProps.episodeUrl) {
+      // If there is episode
       if (this.props.episodeUrl) {
         this.initHowler();
       } else {
@@ -35,6 +37,7 @@ class PlayerContainer extends Component {
       }
     }
 
+    // When episode is playing
     if (this.props.started && !this.props.paused) {
       this.play();
     }
