@@ -91,7 +91,7 @@ class EpisodePage extends Component {
           />
           <FooterContainer />
         </Layout>
-        <PlayerContainer guid={this.props.data.feedAnchorFm.guid} />
+        <PlayerContainer />
       </>
     );
   }
