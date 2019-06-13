@@ -113,7 +113,6 @@ class PlayerContainer extends Component {
   render() {
     return (
       <Player
-        style={{ marginTop: '1rem' }}
         modifier="player--sticky"
         started={this.props.started}
         paused={this.props.paused}
