@@ -23,11 +23,6 @@ class PlayerContainer extends Component {
     );
     this.progressBarWidth = this.progressBarWidth.bind(this);
 
-    // Selected episode
-    this.episode = this.props.data.allFeedAnchorFm.nodes.find(
-      node => node.guid === this.props.guid
-    );
-
     this.timerUpdateInterval = null;
   }
 
@@ -163,26 +158,4 @@ const PlayerContainerConnector = connect(
   mapDispatchToProps
 )(PlayerContainer);
 
-const PlayerContainerQuery = props => (
-  <StaticQuery
-    query={graphql`
-      query PlayerContainerQuery {
-        allFeedAnchorFm {
-          nodes {
-            guid
-            title
-            link
-            enclosure {
-              url
-              length
-              type
-            }
-          }
-        }
-      }
-    `}
-    render={data => <PlayerContainerConnector data={data} {...props} />}
-  />
-);
-
-export default PlayerContainerQuery;
+export default PlayerContainerConnector;
