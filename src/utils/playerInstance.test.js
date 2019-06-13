@@ -60,6 +60,11 @@ describe('player util', () => {
     expect(callback).toBeCalled();
   });
 
+  it('does not fail on play method without initing', () => {
+    const playerObject = playerInstance.get();
+    playerInstance.play();
+  });
+
   it('calls right methods on pause', () => {
     playerInstance.init();
     const playerObject = playerInstance.get();
@@ -111,5 +116,18 @@ describe('player util', () => {
     playerInstance.getRuntime();
 
     expect(playerObject.seek).toHaveBeenCalledTimes(1);
+  });
+
+  it('runs playing on isPlaying', () => {
+    playerInstance.init();
+    const playerObject = playerInstance.get();
+    playerInstance.isPlaying();
+
+    expect(playerObject.playing).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not fail when running isPlaying without initing', () => {
+    const playerObject = playerInstance.get();
+    playerInstance.isPlaying();
   });
 });

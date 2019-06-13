@@ -16,12 +16,17 @@ export default {
     }
   },
   play: callback => {
+    if (!instance) return;
     const playing = instance.playing();
     // This functionality is not tested.
     if (!playing) {
       instance.play();
       if (callback) callback();
     }
+  },
+  isPlaying: () => {
+    if (!instance) return false;
+    return instance.playing();
   },
   pause: callback => {
     instance.pause();
