@@ -36,10 +36,6 @@ const mapDispatchToProps = dispatch => ({
     dispatch({
       type: `PLAY`
     });
-    dispatch({
-      type: `SET_DURATION`,
-      duration: playerInstance.getDuration()
-    });
   }
 });
 
