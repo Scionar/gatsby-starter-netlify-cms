@@ -31,13 +31,17 @@ class PlayerContainer extends Component {
     this.timerUpdateInterval = null;
   }
 
-  componentDidMount() {
-    this.initHowler();
-  }
-
   componentDidUpdate(prevProps) {
+    if (this.props.episodeUrl !== prevProps.episodeUrl) {
+      if (this.props.episodeUrl) {
+        this.initHowler();
+      } else {
+        this.destroyHowler();
+      }
+    }
+
     if (this.props.started && !this.props.paused) {
-      playerInstance.play();
+      this.play();
     }
   }
 
@@ -46,14 +50,16 @@ class PlayerContainer extends Component {
 
     if (!playerInstance.get()) {
       // Check if window is available
-      playerInstance.init({
-        src: this.episode.enclosure.url,
-        onload: () => {
-          this.setState({
-            duration: playerInstance.getDuration()
-          });
-        }
-      });
+      if (this.props.episodeUrl) {
+        playerInstance.init({
+          src: this.props.episodeUrl,
+          onload: () => {
+            this.setState({
+              duration: playerInstance.getDuration()
+            });
+          }
+        });
+      }
     }
   }
 
@@ -62,10 +68,12 @@ class PlayerContainer extends Component {
   }
 
   play() {
-    playerInstance.play(() => {
-      this.props.play();
-      this.props.setDuration();
-    });
+    if (!playerInstance.isPlaying()) {
+      playerInstance.play(() => {
+        this.props.play();
+        this.props.setDuration();
+      });
+    }
   }
 
   pause() {
@@ -131,7 +139,8 @@ const mapStateToProps = state => ({
   started: state.player.started,
   paused: state.player.paused,
   duration: state.player.duration,
-  runtime: state.player.runtime
+  runtime: state.player.runtime,
+  episodeUrl: state.player.episodeUrl
 });
 
 const mapDispatchToProps = dispatch => ({
