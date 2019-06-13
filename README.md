@@ -34,6 +34,8 @@ GATSBY_WEBSITE_URL=
 
 Git pre-commit hook runs Prettier formatter and tests. If tests fail, commit is prevented.
 
+Project uses Redux. Here's an example how Redux installation is made: [Gatsby example: Redux](https://github.com/gatsbyjs/gatsby/tree/master/examples/using-redux);
+
 ### Scripts
 
 Install packages
