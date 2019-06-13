@@ -33,6 +33,24 @@ const reducer = (state, action) => {
       }
     };
   }
+  if (action.type === `SET_DURATION`) {
+    return {
+      ...state,
+      player: {
+        ...state.player,
+        duration: action.duration
+      }
+    };
+  }
+  if (action.type === `SET_RUNTIME`) {
+    return {
+      ...state,
+      player: {
+        ...state.player,
+        runtime: action.runtime
+      }
+    };
+  }
   return state;
 };
 
@@ -43,7 +61,9 @@ const initialState = {
     season: undefined,
     episode: undefined,
     title: undefined,
-    episodeUrl: undefined
+    episodeUrl: undefined,
+    duration: undefined,
+    runtime: undefined
   }
 };
 
