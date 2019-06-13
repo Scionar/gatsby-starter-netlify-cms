@@ -9,3 +9,4 @@ export {
 } from './EpisodeMetaDataContainer';
 export { default as LanderMetaDataContainer } from './LanderMetaDataContainer';
 export { default as PlayerContainer } from './PlayerContainer';
+export { default as PlayButtonContainer } from './PlayButtonContainer';

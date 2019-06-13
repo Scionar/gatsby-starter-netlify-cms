@@ -17,7 +17,8 @@ import {
   FooterContainer,
   EpisodeAvailableOnContainer,
   EpisodeMetaDataContainer,
-  PlayerContainer
+  PlayerContainer,
+  PlayButtonContainer
 } from '../containers';
 
 class EpisodePage extends Component {
@@ -48,7 +49,12 @@ class EpisodePage extends Component {
           seasonNumber={season}
           EpisodeNumber={episode}
         />
-        <PlayerContainer guid={node.guid} />
+        <PlayButtonContainer
+          season={season}
+          episode={episode}
+          title={node.title}
+          episodeUrl={node.enclosure.url}
+        />
         <EpisodeDescription
           modifier="episode-description--hide-on-desktop"
           style={{ marginTop: '2rem' }}
@@ -85,6 +91,7 @@ class EpisodePage extends Component {
           />
           <FooterContainer />
         </Layout>
+        <PlayerContainer guid={this.props.data.feedAnchorFm.guid} />
       </>
     );
   }
