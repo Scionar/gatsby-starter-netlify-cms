@@ -8,7 +8,8 @@ import {
   HeaderContainer,
   FooterContainer,
   EpisodeFeedContainer,
-  LanderMetaDataContainer
+  LanderMetaDataContainer,
+  PlayerContainer
 } from '../containers';
 
 const IndexPage = ({ data }) => {
@@ -36,6 +37,7 @@ const IndexPage = ({ data }) => {
         <EpisodeFeedContainer />
         <FooterContainer />
       </Layout>
+      <PlayerContainer />
     </>
   );
 };

@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import { Howl } from 'howler';
+import { connect } from 'react-redux';
 
-import { episodePath, stripHtml, truncate } from '../utils';
+import { episodePath, stripHtml, truncate, playerInstance } from '../utils';
 import { Player } from '../components';
 
 class PlayerContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      started: false,
-      paused: false,
-      timer: 0,
-      duration: 0
-    };
 
     this.mainButtonAction = this.mainButtonAction.bind(this);
     this.backButtonAction = this.backButtonAction.bind(this);
@@ -21,8 +16,6 @@ class PlayerContainer extends Component {
     this.destroyHowler = this.destroyHowler.bind(this);
     this.play = this.play.bind(this);
     this.pause = this.pause.bind(this);
-    this.rewind = this.rewind.bind(this);
-    this.getDuration = this.getDuration.bind(this);
     this.updateTimer = this.updateTimer.bind(this);
     this.enableTimerUpdateInterval = this.enableTimerUpdateInterval.bind(this);
     this.disableTimerUpdateInterval = this.disableTimerUpdateInterval.bind(
@@ -30,81 +23,72 @@ class PlayerContainer extends Component {
     );
     this.progressBarWidth = this.progressBarWidth.bind(this);
 
-    // Selected episode
-    this.episode = this.props.data.allFeedAnchorFm.nodes.find(
-      node => node.guid === this.props.guid
-    );
-
     this.timerUpdateInterval = null;
   }
 
-  componentDidMount() {
-    this.initHowler();
+  componentDidUpdate(prevProps) {
+    // Episode is switched / stopped
+    if (prevProps.episodeUrl !== this.props.episodeUrl) {
+      if (this.props.episodeUrl) {
+        this.initHowler();
+      } else {
+        this.destroyHowler();
+        this.disableTimerUpdateInterval();
+      }
+    }
+
+    if (!this.props.paused) {
+      this.play();
+      this.enableTimerUpdateInterval();
+    } else {
+      this.disableTimerUpdateInterval();
+    }
   }
 
   initHowler() {
-    this.destroyHowler();
+    playerInstance.destroy();
 
-    if (typeof Howl !== 'undefined') {
+    if (!playerInstance.get()) {
       // Check if window is available
-      this.howler = new Howl({
-        src: this.episode.enclosure.url,
-        onload: () => {
-          this.setState({
-            duration: this.howler.duration()
-          });
-        }
-      });
+      if (this.props.episodeUrl) {
+        playerInstance.init({
+          src: this.props.episodeUrl,
+          onload: () => {
+            this.props.setDuration(playerInstance.getDuration());
+          }
+        });
+      }
     }
   }
 
   destroyHowler() {
-    if (this.howler) {
-      this.howler.off();
-      this.howler.stop();
-      this.howler.unload();
-      this.howler = null;
-    }
+    playerInstance.destroy();
   }
 
   play() {
-    const playing = this.howler.playing();
-
-    if (!playing) {
-      this.howler.play();
-      this.setState({
-        started: true,
-        paused: false
+    if (!playerInstance.isPlaying()) {
+      playerInstance.play(() => {
+        this.props.play();
+        this.props.setDuration(playerInstance.getDuration());
       });
-      this.enableTimerUpdateInterval();
     }
   }
 
   pause() {
-    this.howler.pause();
-    this.setState({
-      paused: true
+    playerInstance.pause(() => {
+      this.props.pause();
+      this.disableTimerUpdateInterval();
     });
-    this.disableTimerUpdateInterval();
-  }
-
-  rewind() {
-    this.howler.seek(0);
-    this.updateTimer();
-  }
-
-  getDuration() {
-    return this.howler.duration();
   }
 
   updateTimer() {
-    this.setState({
-      timer: this.howler.seek()
-    });
+    this.props.setRuntime(playerInstance.getRuntime());
   }
 
   enableTimerUpdateInterval() {
-    this.timerUpdateInterval = setInterval(this.updateTimer, 250);
+    if (!this.timerUpdateInterval) {
+      this.timerUpdateInterval = setInterval(this.updateTimer, 250);
+    }
   }
 
   disableTimerUpdateInterval() {
@@ -112,7 +96,7 @@ class PlayerContainer extends Component {
   }
 
   mainButtonAction() {
-    if (!this.state.started || this.state.paused) {
+    if (!this.props.started || this.props.paused) {
       this.play();
     } else {
       this.pause();
@@ -120,49 +104,69 @@ class PlayerContainer extends Component {
   }
 
   backButtonAction() {
-    this.rewind();
+    playerInstance.rewind(() => {
+      this.updateTimer();
+    });
   }
 
   progressBarWidth() {
-    return (this.state.timer / this.state.duration) * 100;
+    return (this.props.runtime / this.props.duration) * 100;
   }
 
   render() {
+    let modifiers = 'player--sticky';
+    if (this.props.started) modifiers += ' player--sticky-shown';
+
     return (
       <Player
-        style={{ marginTop: '1rem' }}
-        started={this.state.started}
-        paused={this.state.paused}
+        modifier={modifiers}
+        started={this.props.started}
+        paused={this.props.paused}
         mainButtonAction={this.mainButtonAction}
         backButtonAction={this.backButtonAction}
-        timer={this.state.timer}
-        duration={this.state.duration}
+        timer={this.props.runtime}
+        duration={this.props.duration}
         progressBarWidth={this.progressBarWidth()}
       />
     );
   }
 }
 
-const PlayerContainerQuery = props => (
-  <StaticQuery
-    query={graphql`
-      query PlayerContainerQuery {
-        allFeedAnchorFm {
-          nodes {
-            guid
-            title
-            link
-            enclosure {
-              url
-              length
-              type
-            }
-          }
-        }
-      }
-    `}
-    render={data => <PlayerContainer data={data} {...props} />}
-  />
-);
+const mapStateToProps = state => ({
+  season: state.player.season,
+  episode: state.player.episode,
+  title: state.player.title,
+  started: state.player.started,
+  paused: state.player.paused,
+  duration: state.player.duration,
+  runtime: state.player.runtime,
+  episodeUrl: state.player.episodeUrl
+});
 
-export default PlayerContainerQuery;
+const mapDispatchToProps = dispatch => ({
+  play: () =>
+    dispatch({
+      type: `PLAY`
+    }),
+  pause: () =>
+    dispatch({
+      type: `PAUSE`
+    }),
+  setDuration: duration =>
+    dispatch({
+      type: `SET_DURATION`,
+      duration
+    }),
+  setRuntime: runtime =>
+    dispatch({
+      type: `SET_RUNTIME`,
+      runtime
+    })
+});
+
+const PlayerContainerConnector = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PlayerContainer);
+
+export default PlayerContainerConnector;

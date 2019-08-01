@@ -1,0 +1,19 @@
+@import '../../styles/variables.scss';
+
+.play-button {
+  background-color: $color__gray;
+  border: 0;
+  border-radius: 0.25rem;
+  color: $color__white;
+  display: block;
+  font-size: 0.8rem;
+  height: 2rem;
+  margin: 0;
+}
+
+.play-button__icon {
+  margin: 0 0.7rem 0 0;
+  max-height: 0.8rem;
+  max-width: 0.8rem;
+  vertical-align: middle;
+}
