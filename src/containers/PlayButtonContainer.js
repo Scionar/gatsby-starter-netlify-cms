@@ -20,7 +20,7 @@ class PlayButtonContainer extends Component {
   }
 
   render() {
-    return <PlayButton style={{ marginTop: '2rem' }} action={this.action} />;
+    return <PlayButton style={{ marginTop: '1rem' }} action={this.action} />;
   }
 }
 
