@@ -114,9 +114,12 @@ class PlayerContainer extends Component {
   }
 
   render() {
+    let modifiers = 'player--sticky';
+    if (this.props.started) modifiers += ' player--sticky-shown';
+
     return (
       <Player
-        modifier="player--sticky"
+        modifier={modifiers}
         started={this.props.started}
         paused={this.props.paused}
         mainButtonAction={this.mainButtonAction}

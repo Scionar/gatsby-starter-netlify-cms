@@ -8,10 +8,15 @@
 }
 
 .player--sticky {
+  transition: bottom 0.25s;
   position: fixed;
-  bottom: 0;
+  bottom: -8rem;
   left: 0;
   right: 0;
+}
+
+.player--sticky-shown {
+  bottom: 0;
 }
 
 .player__content {
