@@ -40,6 +40,6 @@ export default {
     return instance.duration();
   },
   getRuntime: () => {
-    instance.seek();
+    return instance.seek();
   }
 };

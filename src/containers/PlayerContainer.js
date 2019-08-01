@@ -28,18 +28,20 @@ class PlayerContainer extends Component {
 
   componentDidUpdate(prevProps) {
     // Episode is switched / stopped
-    if (this.props.episodeUrl !== prevProps.episodeUrl) {
-      // If there is episode
+    if (prevProps.episodeUrl !== this.props.episodeUrl) {
       if (this.props.episodeUrl) {
         this.initHowler();
       } else {
         this.destroyHowler();
+        this.disableTimerUpdateInterval();
       }
     }
 
-    // When episode is playing
-    if (this.props.started && !this.props.paused) {
+    if (!this.props.paused) {
       this.play();
+      this.enableTimerUpdateInterval();
+    } else {
+      this.disableTimerUpdateInterval();
     }
   }
 
@@ -52,9 +54,7 @@ class PlayerContainer extends Component {
         playerInstance.init({
           src: this.props.episodeUrl,
           onload: () => {
-            this.setState({
-              duration: playerInstance.getDuration()
-            });
+            this.props.setDuration(playerInstance.getDuration());
           }
         });
       }
@@ -69,7 +69,7 @@ class PlayerContainer extends Component {
     if (!playerInstance.isPlaying()) {
       playerInstance.play(() => {
         this.props.play();
-        this.props.setDuration();
+        this.props.setDuration(playerInstance.getDuration());
       });
     }
   }
@@ -82,13 +82,13 @@ class PlayerContainer extends Component {
   }
 
   updateTimer() {
-    this.setState({
-      timer: playerInstance.getRuntime()
-    });
+    this.props.setRuntime(playerInstance.getRuntime());
   }
 
   enableTimerUpdateInterval() {
-    this.timerUpdateInterval = setInterval(this.updateTimer, 250);
+    if (!this.timerUpdateInterval) {
+      this.timerUpdateInterval = setInterval(this.updateTimer, 250);
+    }
   }
 
   disableTimerUpdateInterval() {
@@ -149,9 +149,15 @@ const mapDispatchToProps = dispatch => ({
     dispatch({
       type: `PAUSE`
     }),
-  setDuration: () =>
+  setDuration: duration =>
     dispatch({
-      type: `SET_DURATION`
+      type: `SET_DURATION`,
+      duration
+    }),
+  setRuntime: runtime =>
+    dispatch({
+      type: `SET_RUNTIME`,
+      runtime
     })
 });
 
