@@ -67,10 +67,16 @@ const initialState = {
   }
 };
 
-const createStore = () =>
-  reduxCreateStore(
-    reducer,
-    initialState,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  );
+const createStore = () => {
+  // Set devtools if we are in development environment.
+  let devTools;
+  if (process.env === 'development') {
+    devTools =
+      window.__REDUX_DEVTOOLS_EXTENSION__ &&
+      window.__REDUX_DEVTOOLS_EXTENSION__();
+  }
+
+  return reduxCreateStore(reducer, initialState, devTools);
+};
+
 export default createStore;
