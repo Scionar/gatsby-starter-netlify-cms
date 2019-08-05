@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Link } from 'gatsby';
 
+import { PlayButtonContainer } from '../../containers';
 import './EpisodeCard.scss';
 
 const EpisodeCard = ({
@@ -12,7 +13,9 @@ const EpisodeCard = ({
   coverImage,
   title,
   description,
-  link
+  link,
+  season,
+  episodeUrl
 }) => {
   let styledRunningNumber = '';
   if (runningNumber !== null) {
@@ -38,6 +41,12 @@ const EpisodeCard = ({
         <Link className="episode-card__link" to={link}>
           More
         </Link>
+        <PlayButtonContainer
+          season={season}
+          episode={runningNumber}
+          title={title}
+          episodeUrl={episodeUrl}
+        />
       </div>
     </div>
   );
@@ -53,7 +62,9 @@ EpisodeCard.propTypes = {
   coverImage: PropTypes.string,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
-  link: PropTypes.string.isRequired
+  link: PropTypes.string.isRequired,
+  season: PropTypes.string.isRequired,
+  episodeUrl: PropTypes.string.isRequired
 };
 
 export default EpisodeCard;

@@ -57,6 +57,8 @@ const EpisodeFeedContainer = ({ data }) => {
               title={node.title}
               description={truncate(stripHtml(node.content), 150)}
               link={episodePath(node.title)}
+              season={'' + seasonIndex}
+              episodeUrl={node.enclosure.url}
             />
           );
         })}
@@ -75,6 +77,9 @@ const EpisodeFeedContainerQuery = props => (
             title
             content
             link
+            enclosure {
+              url
+            }
             itunes {
               summary
               image {
