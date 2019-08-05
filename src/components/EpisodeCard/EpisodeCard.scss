@@ -9,7 +9,7 @@
 
   @include breakpoint(m) {
     flex-wrap: nowrap;
-    height: 11rem;
+    min-height: 11rem;
   }
 }
 
