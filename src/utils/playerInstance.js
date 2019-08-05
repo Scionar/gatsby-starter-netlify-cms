@@ -40,6 +40,10 @@ export default {
     return instance.duration();
   },
   getRuntime: () => {
-    return instance.seek();
+    const position = instance.seek();
+    /* Prevent unexpected return. Howler returns object when audio is still loading.
+      https://github.com/goldfire/howler.js/issues/1189 */
+    if (typeof position !== 'number') return 0;
+    return position;
   }
 };
