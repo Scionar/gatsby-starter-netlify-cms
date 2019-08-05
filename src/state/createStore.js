@@ -70,7 +70,7 @@ const initialState = {
 const createStore = () => {
   // Set devtools if we are in development environment.
   let devTools;
-  if (process.env === 'development') {
+  if (process.env.NODE_ENV === 'development') {
     devTools =
       window.__REDUX_DEVTOOLS_EXTENSION__ &&
       window.__REDUX_DEVTOOLS_EXTENSION__();
